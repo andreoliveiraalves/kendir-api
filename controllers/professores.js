@@ -1,22 +1,21 @@
-const Desafio = require('../models/desafios').Desafio
+const Professor = require('../models/professores').Professor
 
-const criarDesafio = (req, res) => {
-    Desafio.findOne({
+const criarProfessor = (req, res) => {
+    Professor.findOne({
         where: {
-        nome: req.body.nome
-        }
+            nome: req.body.nome
+            }
     }).then((result) => {
         if (result) {
             res.status(406).send('Desafio já existe')
         }
         else {
-            const desafio = new Desafio({
+            const professor = new Professor({
                 nome: req.body.nome,
-                descricao: req.body.descricao,
-                tipo: req.body.tipo,
-                status: req.body.status,
+                apelido: req.body.apelido,
+                email: req.body.email
             })
-            desafio.save().then((result) => {
+            professor.save().then((result) => {
                 res.status(200).json(result)
             }).catch((err) => {
                 console.log(err)
@@ -29,4 +28,4 @@ const criarDesafio = (req, res) => {
     })
 }
 
-exports.criarDesafio = criarDesafio;
+exports.criarProfessor = criarProfessor;
