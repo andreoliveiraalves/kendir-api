@@ -13,6 +13,7 @@ const rota_niveis = require('./routes/niveis')
 const rota_professores = require('./routes/professores')
 const rota_rondas = require('./routes/rondas')
 const rota_turmas = require('./routes/turmas')
+const rota_admin = require('./routes/admin')
 const models = require('./models/models')
 const utilities = require('./utilities/jwt')
 
@@ -60,6 +61,7 @@ app.use('/niveis', rota_niveis)
 app.use('/professores', rota_professores)
 app.use('/rondas', rota_rondas)
 app.use('/turmas', rota_turmas)
+app.use('/admin', rota_admin)
 
 app.listen(port,()=> {
     console.log('Server running on port ' + port); 
