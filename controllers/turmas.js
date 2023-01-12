@@ -11,6 +11,7 @@ const criarTurma = (req, res) => {
         }
         else {
             const turma = new Turma({
+                escolaId: req.body.escolaId,
                 nome: req.body.nome,
             })
             turma.save().then((result) => {

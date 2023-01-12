@@ -12,6 +12,7 @@ const criarJogo = (req, res) => {
         else {
             const jogo = new Jogo({
                 nome: req.body.nome,
+                moduloId: req.body.moduloId,
             })
             jogo.save().then((result) => {
                 res.status(200).json(result)

@@ -15,6 +15,7 @@ const criarDesafio = (req, res) => {
                 descricao: req.body.descricao,
                 tipo: req.body.tipo,
                 status: req.body.status,
+                professorId: req.body.professorId,
             })
             desafio.save().then((result) => {
                 res.status(200).json(result)

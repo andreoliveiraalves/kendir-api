@@ -13,6 +13,7 @@ const criarNivel = (req, res) => {
             const nivel = new Nivel({
                 nome: req.body.nome,
                 recorde: req.body.recorde,
+                jogoId: req.body.jogoId
             })
             nivel.save().then((result) => {
                 res.status(200).json(result)

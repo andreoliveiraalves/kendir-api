@@ -13,7 +13,7 @@ const criarProfessor = (req, res) => {
             const professor = new Professor({
                 nome: req.body.nome,
                 apelido: req.body.apelido,
-                email: req.body.email
+                email: req.body.email,
             })
             professor.save().then((result) => {
                 res.status(200).json(result)

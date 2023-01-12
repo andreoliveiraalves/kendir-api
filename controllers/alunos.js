@@ -14,6 +14,7 @@ const criarAluno = (req, res) => {
                 nome: req.body.nome,
                 apelido: req.body.apelido,
                 email: req.body.email,
+                turmaId : req.body.turmaId,
             })
             aluno.save().then((result) => {
                 res.status(200).json(result)

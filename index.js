@@ -13,6 +13,7 @@ const rota_niveis = require('./routes/niveis')
 const rota_professores = require('./routes/professores')
 const rota_rondas = require('./routes/rondas')
 const rota_turmas = require('./routes/turmas')
+const models = require('./models/models')
 
 sequelize.authenticate().then(function(errors) { 
     if (errors) {
