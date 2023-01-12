@@ -28,7 +28,7 @@ sequelize.authenticate().then(function(errors) {
  });
 
  const auth = function(req, res, next) {
-    let exceptions = ['/', '/login', '/register']; 
+    let exceptions = ['/', '/admin/login', '/admin/register']; 
     if(exceptions.indexOf(req.url) >= 0) {
         next(); 
     } else {

@@ -9,12 +9,12 @@ router.post('/login',  function (req, res) {
 })
 
 router.post('/register', [
-    body('mome').notEmpty().escape(), 
+    body('nome').notEmpty().escape(), 
     body('password').notEmpty().escape()
 ],  function (req, res) {
     const errors = validationResult(req); 
     if (errors.isEmpty()) {
-        controller.register(req, res); 
+        controller.registo(req, res); 
     } else {
         res.status(404).json({errors: errors.array()})
     }

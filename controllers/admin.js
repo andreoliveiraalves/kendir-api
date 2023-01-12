@@ -4,7 +4,8 @@ const utilities = require('../utilities/jwt')
 
 const login = (req, res) => {
 
-    admin.find({nome: req.body.nome}, function (err, admin) {
+    admin.findOne({where:
+        {nome: req.body.nome}}, function (err, admin) {
         if (err) {
             res.status(400).send(err); 
         }
@@ -31,11 +32,11 @@ const registo = (req, res) => {
             
             const adminToCreate = new admin({ nome: req.body.nome, password: hash });
 
-            admin.find({nome: req.body.nome}, function (err, nome) {
+            admin.findOne({
+                where: {nome: req.body.nome}}, function (err, nome) {
                 if (err) {
                     res.status(400).send(err); 
                 }
-        
                 if(nome.length > 0) {
                     res.status(406).send("Administrador já existe"); 
                 } else {
