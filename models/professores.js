@@ -6,6 +6,10 @@ const Professor = sequelize.define('professor', {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+  },
     apelido: {
 		type: DataTypes.STRING,
 		allowNull: false,

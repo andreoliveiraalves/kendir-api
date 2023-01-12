@@ -14,6 +14,7 @@ const criarProfessor = (req, res) => {
                 nome: req.body.nome,
                 apelido: req.body.apelido,
                 email: req.body.email,
+                password: req.body.password,
             })
             professor.save().then((result) => {
                 res.status(200).json(result)

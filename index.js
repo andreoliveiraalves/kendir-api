@@ -14,6 +14,9 @@ const rota_professores = require('./routes/professores')
 const rota_rondas = require('./routes/rondas')
 const rota_turmas = require('./routes/turmas')
 const models = require('./models/models')
+const utilities = require('./utilities/jwt')
+
+
 
 sequelize.authenticate().then(function(errors) { 
     if (errors) {
@@ -23,11 +26,29 @@ sequelize.authenticate().then(function(errors) {
     }
  });
 
+ const auth = function(req, res, next) {
+    let exceptions = ['/', '/login', '/register']; 
+    if(exceptions.indexOf(req.url) >= 0) {
+        next(); 
+    } else {
+        utilities.validateToken(req.headers.authorization, (result) => {
+            if(result) {
+                next(); 
+            } else {
+                res.status(401).send("Invalid Token"); 
+            }
+        })
+    }
+}
+
 app.use(express.json());
 app.use(cors()); 
+app.use(auth);
 
 app.get("/", (req, res) => {
-    res.send()
+    res.send(`<h1>Bem vindo à API kendir professor</h1>
+    <br><p>Para mais informação pode consultar o nosso <a href="https://github.com/andreoliveiraalves/kendir-api">
+    github</a></p>`)
 });
 
 app.use('/alunos', rota_alunos)
@@ -42,5 +63,5 @@ app.use('/turmas', rota_turmas)
 
 app.listen(port,()=> {
     console.log('Server running on port ' + port); 
-
+    console.log(process.env.SECRET)
 })
