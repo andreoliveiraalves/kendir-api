@@ -1,9 +1,17 @@
 const express = require('express');
 const router = express.Router()
-const controller = require('../controllers/niveis')
+const nivelcontroller = require('../controllers/niveis')
 
-router.route('/').post( (req,res) => {
-    controller.criarNivel(req, res);
-})
+/*router.route('/niveis').post( (req,res) => {
+    nivelcontroller.criarNivel(req, res);
+    nivelcontroller.findAll(req, res);
+})*/
+router.route('/niveis')
+    .get(nivelcontroller.findAll)
+    .post(nivelcontroller.criarNivel)
+    
+router.route('/nivelID')
+    .get(nivelcontroller.findOne)
+
 
 module.exports = router;

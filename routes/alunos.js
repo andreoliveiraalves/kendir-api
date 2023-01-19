@@ -1,9 +1,15 @@
 const express = require('express');
 const router = express.Router()
-const controller = require('../controllers/alunos')
+const alunoController = require('../controllers/alunos')
 
-router.route('/').post( (req,res) => {
-    controller.criarAluno(req, res);
-})
+/*router.route('/alunos').post( (req,res) => {
+    alunoController.criarAluno(req, res);
+})*/
+router.route('/alunos')
+    .get(alunoController.findAll)
+    .post(alunoController.criarAluno)
+
+router.route('/alunoID')
+    .get(alunoController.findOne)
 
 module.exports = router;
