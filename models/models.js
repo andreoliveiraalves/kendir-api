@@ -9,10 +9,10 @@ const Modulo = require('./modulos').Modulo
 const Jogo = require('./jogos').Jogo
 const Nivel = require('./niveis').Nivel
 const EscolaProfessor = require('./escolaprofessor').EscolaProfessor
-const Admin = require('./admin').Admin
 
 
-Admin.hasMany(Professor)
+
+
 Professor.hasMany(Modulo) 
 Professor.hasMany(Desafio) 
 Escola.hasMany(Turma) 

@@ -1,3 +1,4 @@
+const { validationResult } = require('express-validator');
 const express = require('express');
 const router = express.Router()
 const professorcontroller = require('../controllers/professores')
@@ -6,11 +7,21 @@ const professorcontroller = require('../controllers/professores')
     professorcontroller.criarProfessor(req, res);
     professorcontroller.findAll(req, res);
 })*/
-router.route('/professores')
-    .get(professorcontroller.findAll)
-    .post(professorcontroller.criarProfessor)
-    
-router.route('/professorID')
-    .get(professorcontroller.findOne)
+
+
+// router.get('/:profEmail', [
+//     param('profEmail').notEmpty().escape(),
+// ], function (req, res) {
+//     const errors = validationResult(req);
+//     if (errors.isEmpty()) {
+//         professorcontroller.findOne(req, res);
+//     } else {
+//         res.status(404).json({ errors: errors.array() })
+//     }
+// })
+
+router.get('/:profEmail', function(req, res) {
+    professorcontroller.findOne(req, res)
+})
 
 module.exports = router;

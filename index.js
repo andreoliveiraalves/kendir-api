@@ -13,7 +13,6 @@ const rota_niveis = require('./routes/niveis')
 const rota_professores = require('./routes/professores')
 const rota_rondas = require('./routes/rondas')
 const rota_turmas = require('./routes/turmas')
-const rota_admin = require('./routes/admin')
 const models = require('./models/models')
 const utilities = require('./utilities/jwt')
 
@@ -27,24 +26,10 @@ sequelize.authenticate().then(function(errors) {
     }
  });
 
- const auth = function(req, res, next) {
-    let exceptions = ['/', '/admin/login', '/admin/register']; 
-    if(exceptions.indexOf(req.url) >= 0) {
-        next(); 
-    } else {
-        utilities.validateToken(req.headers.authorization, (result) => {
-            if(result) {
-                next(); 
-            } else {
-                res.status(401).send("Invalid Token"); 
-            }
-        })
-    }
-}
+
 
 app.use(express.json());
-app.use(cors()); 
-app.use(auth);
+app.use(cors());
 
 app.get("/", (req, res) => {
     res.send(`<h1>Bem vindo à API kendir professor</h1>
@@ -61,7 +46,6 @@ app.use('/niveis', rota_niveis)
 app.use('/professores', rota_professores)
 app.use('/rondas', rota_rondas)
 app.use('/turmas', rota_turmas)
-app.use('/admin', rota_admin)
 
 app.listen(port,()=> {
     console.log('Server running on port ' + port); 
