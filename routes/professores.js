@@ -20,7 +20,7 @@ const professorcontroller = require('../controllers/professores')
 //     }
 // })
 
-router.get('/:profEmail', function(req, res) {
+router.get('/:profEmail/:profPass', function(req, res) {
     professorcontroller.findOne(req, res)
 })
 

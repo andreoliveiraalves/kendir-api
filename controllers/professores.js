@@ -32,11 +32,11 @@ const criarProfessor = (req, res) => {
 
 // List just one user
 const findOne = async (req, res) => {
-    Professor.findOne({ where: { email: req.params.profEmail } }).then((result) => {
+    Professor.findOne({ where: { email: req.params.profEmail , password: req.params.profPass} }).then((result) => {
         if (result) {
             res.status(200).json(result);
         } else {
-            res.status(404).send('not found');
+            res.status(404).send('Professor with those credentials not found');
         }
     }).catch((err) => {
         res.status(400).send(err);
