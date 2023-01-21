@@ -7,9 +7,6 @@ const modulocontroller = require('../controllers/modulos')
     modulocontroller.findAll(req, res);
 })*/
 router.route('modulos')
-    .get(modulocontroller.findAll)
     .post(modulocontroller.criarModulo)
-router.route('/moduloID')
-    .get(modulocontroller.findOne)
 
 module.exports = router;

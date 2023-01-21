@@ -7,10 +7,6 @@ const escolacontroller = require('../controllers/escolas')
     escolacontroller.findAll(req, res);
 })*/
 router.route('escolas')
-    .get(escolacontroller.findAll)
     .post(escolacontroller.criarEscola)
     
-router.route('/escolaID')
-    .get(escolacontroller.findOne)
-
 module.exports = router;

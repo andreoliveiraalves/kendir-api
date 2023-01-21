@@ -7,11 +7,6 @@ const nivelcontroller = require('../controllers/niveis')
     nivelcontroller.findAll(req, res);
 })*/
 router.route('/niveis')
-    .get(nivelcontroller.findAll)
     .post(nivelcontroller.criarNivel)
-    
-router.route('/nivelID')
-    .get(nivelcontroller.findOne)
-
 
 module.exports = router;

@@ -7,10 +7,6 @@ const desafiocontroller = require('../controllers/desafios')
     desafiocontroller.findAll(req, res);
 })*/
 router.route('/desafios')
-    .get(desafiocontroller.findAll)
     .post(desafiocontroller.criarDesafio)
-    
-router.route('/desafioID')
-    .get(desafiocontroller.findOne)
 
 module.exports = router;

@@ -31,7 +31,7 @@ const criarProfessor = (req, res) => {
 
 
 // List just one user
-const findOne = async (req, res) => {
+const findProfessor = async (req, res) => {
     Professor.findOne({ where: { email: req.params.profEmail , password: req.params.profPass} }).then((result) => {
         if (result) {
             res.status(200).json(result);
@@ -41,23 +41,6 @@ const findOne = async (req, res) => {
     }).catch((err) => {
         res.status(400).send(err);
     });
-
-    // try {
-    //     let professor = await Professor.findOne({ where: { email: req.params.profEmail } })
-
-    //     if (professor === null)
-    //         res.status(404).json({
-    //             success: false, msg: `Cannot find any user with email ${req.params.profEmail}.`
-    //         });
-    //     else
-    //         res.json({ success: true, professor: professor });
-    // }
-    // catch (err) {
-    //     res.status(500).json({
-    //         success: false, msg: `Catch error. email: ${req.params.profEmail}.`
-    //     });
-    // };
-};
-
+}
 exports.criarProfessor = criarProfessor
-exports.findOne = findOne
+exports.findProfessor = findProfessor

@@ -7,10 +7,6 @@ const jogocontroller = require('../controllers/jogos')
     jogocontroller.findAll(req, res);
 })*/
 router.route('jogos')
-    .get(jogocontroller.findAll)
     .post(jogocontroller.criarJogo)
     
-router.route('/jogoID')
-    .get(jogocontroller.findOne)
-
 module.exports = router;

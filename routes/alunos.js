@@ -6,10 +6,6 @@ const alunoController = require('../controllers/alunos')
     alunoController.criarAluno(req, res);
 })*/
 router.route('/alunos')
-    .get(alunoController.findAll)
     .post(alunoController.criarAluno)
-
-router.route('/alunoID')
-    .get(alunoController.findOne)
 
 module.exports = router;
