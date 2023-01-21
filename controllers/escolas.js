@@ -32,6 +32,8 @@ const criarEscola = (req, res) => {
     })
 }
 
+//Devolver Array com escola e número de alunos associados
+
 const getSchoolsByProfessor = async (req, res) => {
     const result = []
     Escola.findAll({
@@ -55,7 +57,9 @@ const getSchoolsByProfessor = async (req, res) => {
             })
         }
         res.status(200).json(result)
-    }))
+    })).catch(err => {
+        res.status(400).send(err)
+    })
 }
 
 
