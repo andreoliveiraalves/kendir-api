@@ -2,12 +2,13 @@ const express = require('express');
 const router = express.Router()
 const escolacontroller = require('../controllers/escolas')
 
-/*router.route('/escolas').post( (req,res) => {
-    escolacontroller.criarEscola(req, res);
-    escolacontroller.findAll(req, res);
-})*/
-router.route('escolas')
-    .post(escolacontroller.criarEscola)
+/**
+ * @route GET /escolas/{professorId}
+ * @group Escolas e número de alunos de um professor
+ * @param {object}  professorId.path  - Professor ID - eg. {"professorId":"1"} 
+ * @returns {object} 200 - Array of objects [{{Escola},alunos.count},...]
+ * @returns {Error} 400 - Unexpected error
+ */
 
 router.get('/:professorId', function(req, res) {
     escolacontroller.getSchoolsByProfessor(req, res)

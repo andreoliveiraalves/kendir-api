@@ -1,6 +1,14 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../utilities/sequelize').sequelizeConnection
 
+/**
+ * @typedef Professor
+ * @property {string} nome.required
+ * @property {string} password.required
+ * @property {string} apelido.required
+ * @property {boolean} email.required
+ */
+
 const Professor = sequelize.define('professor', {
     nome: {
         type: DataTypes.STRING,

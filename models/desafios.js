@@ -2,11 +2,13 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../utilities/sequelize').sequelizeConnection
 
 /**
- * @typedef Aluno
+ * @typedef Desafio
  * @property {string} nome.required
  * @property {string} descricao.required
  * @property {string} tipo.required
- *  
+ * @property {boolean} status.required
+ * @property {float} objetivo.required
+ * @property {float} progresso.required
  */
 
 const Desafio = sequelize.define('desafio', {

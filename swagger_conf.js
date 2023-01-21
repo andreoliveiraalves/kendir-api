@@ -1,8 +1,8 @@
 const options = {
     swaggerDefinition: {
         info: {
-            description: 'Users API Document',
-            title: 'Users API',
+            description: 'Liber Domus: Módulo Professor API Documentation',
+            title: 'Liber Domus',
             version: '1.0.0',
         },
         host: 'localhost:3000',

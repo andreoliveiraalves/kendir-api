@@ -1,6 +1,12 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../utilities/sequelize').sequelizeConnection
 
+/**
+ * @typedef Nivel
+ * @property {string} nome.required
+ * @property {float} recorde.required
+ */
+
 const Nivel = sequelize.define('nivel', {
     nome: {
         type: DataTypes.STRING,
