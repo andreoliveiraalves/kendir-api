@@ -21,6 +21,7 @@ Modulo.hasMany(Jogo)
 Jogo.hasMany(Nivel) 
 Nivel.hasMany(Ronda) 
 Aluno.hasMany(Ronda) 
+Desafio.hasMany(Ronda)
 EscolaProfessor.belongsTo(Professor)
 EscolaProfessor.belongsTo(Escola)
 Turma.belongsTo(Escola) 
@@ -31,6 +32,7 @@ Nivel.belongsTo(Jogo)
 Ronda.belongsTo(Nivel) 
 Ronda.belongsTo(Aluno) 
 Desafio.belongsTo(Professor) 
+Desafio.belongsTo(Ronda)
  
 sequelize.sync().then(()=> {
     console.log("Connected to Database");

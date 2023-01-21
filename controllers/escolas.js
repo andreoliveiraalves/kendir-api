@@ -32,7 +32,7 @@ const criarEscola = (req, res) => {
     })
 }
 
-//Devolver Array com escola e número de alunos associados
+//Devolver Array de objectos contendo a escola e número de alunos associados ao ecrã turmas
 
 const getSchoolsByProfessor = async (req, res) => {
     const result = []

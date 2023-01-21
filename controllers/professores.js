@@ -31,7 +31,7 @@ const criarProfessor = (req, res) => {
 
 
 const findProfessor = async (req, res) => {
-    Professor.findOne({ where: { email: req.params.profEmail , password: req.params.profPass} }).then((result) => {
+    Professor.findOne({ where: { email: req.body.profEmail , password: req.body.profPass} }).then((result) => {
         if (result) {
             res.status(200).json(result.id);
         } else {

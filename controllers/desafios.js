@@ -35,7 +35,6 @@ const obterDesafios = (req, res) => {
         where:{
             professorId: req.params.professorId
         },
-        limit: 3
     }).then((result) => {
         if (result) {
             res.status(200).send(result)
