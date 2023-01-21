@@ -30,11 +30,10 @@ const criarProfessor = (req, res) => {
 }
 
 
-// List just one user
 const findProfessor = async (req, res) => {
     Professor.findOne({ where: { email: req.params.profEmail , password: req.params.profPass} }).then((result) => {
         if (result) {
-            res.status(200).json(result);
+            res.status(200).json(result.id);
         } else {
             res.status(404).send('Professor with those credentials not found');
         }

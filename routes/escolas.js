@@ -8,5 +8,9 @@ const escolacontroller = require('../controllers/escolas')
 })*/
 router.route('escolas')
     .post(escolacontroller.criarEscola)
-    
+
+router.get('/:professorId', function(req, res) {
+    escolacontroller.getSchoolsByProfessor(req, res)
+    })
+
 module.exports = router;
