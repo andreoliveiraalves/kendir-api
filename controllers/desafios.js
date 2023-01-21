@@ -1,7 +1,7 @@
 const Desafio = require('../models/desafios').Desafio
 
 const criarDesafio = (req, res) => {
-    Desafio.findOne({
+    Desafio.findAll({
         where: {
         nome: req.body.nome
         }
@@ -30,5 +30,25 @@ const criarDesafio = (req, res) => {
     })
 }
 
+const obterDesafios = (req, res) => {
+    Desafio.findAll({
+        where:{
+            professorId: req.params.professorId
+        },
+        limit: 3
+    }).then((result) => {
+        if (result) {
+            res.status(200).send(result)
+        }
+        else {
+            res.status(400).send('Não foi possivel obter os seus desafios.')
+        }
+    }).catch((error) => {
+        console.log(error)
+        res.status(400).send(error)
+    })
+}
+
 
 exports.criarDesafio = criarDesafio;
+exports.obterDesafios = obterDesafios;

@@ -27,4 +27,19 @@ const criarTurma = (req, res) => {
     })
 }
 
+const findTurmas = async (req, res) => {
+    Turma.findAll({  where:{
+        escolaId: req.params.escolaId
+    }, }).then((result) => {
+        if (result) {
+            res.status(200).json(result);
+        } else {
+            res.status(400).send('Não foi possivel obter as suas turmas.');
+        }
+    }).catch((err) => {
+        res.status(400).send(err);
+    });
+}
+
 exports.criarTurma = criarTurma;
+exports.findTurmas = findTurmas;

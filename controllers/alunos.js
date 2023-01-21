@@ -29,5 +29,20 @@ const criarAluno = (req, res) => {
     })
 }
 
+const findAlunos = async (req, res) => {
+    Aluno.findAll({  where:{
+        turmaId: req.params.turmaId
+    }, }).then((result) => {
+        if (result) {
+            res.status(200).json(result);
+        } else {
+            res.status(400).send('Não foi possivel obter os alunos desta turma.');
+        }
+    }).catch((err) => {
+        res.status(400).send(err);
+    });
+}
+
 
 exports.criarAluno = criarAluno;
+exports.findAlunos = findAlunos;

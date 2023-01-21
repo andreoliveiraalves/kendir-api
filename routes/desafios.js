@@ -9,4 +9,8 @@ const desafiocontroller = require('../controllers/desafios')
 router.route('/desafios')
     .post(desafiocontroller.criarDesafio)
 
+router.get('/:professorId', function(req, res) {
+    desafiocontroller.obterDesafios(req, res)
+})
+
 module.exports = router;

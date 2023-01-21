@@ -8,4 +8,8 @@ const alunoController = require('../controllers/alunos')
 router.route('/alunos')
     .post(alunoController.criarAluno)
 
+router.get('/:turmaId', function(req, res) {
+    alunoController.findAlunos(req, res)
+})
+
 module.exports = router;
