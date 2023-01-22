@@ -1,21 +1,34 @@
 const Turma = require('../models/turmas').Turma
-
-const findTurmas = async (req, res) => {
-    Turma.findAll({  where:{
-        escolaId: req.params.escolaId
-    }, }).then((result) => {
-        if (result) {
-            res.status(200).json(result);
-        } else {
-            res.status(400).send('Não foi possivel obter as suas turmas.');
-        }
-    }).catch((err) => {
-        res.status(400).send(err);
-    });
-}
+const Escola = require('../models/escolas').Escola
+const Aluno = require('../models/alunos').Aluno
+const Sequelize = require('sequelize');
+const { Op } = Sequelize;
 
 const getTurmasByProfessor = async (req, res) => {
     const result = []
+    Escola.findAll({
+        where: {
+            id: {
+                [Op.in]: Sequelize.literal(`(SELECT escolaid FROM escolaprofessores WHERE professorid = ${req.params.professorId})`)
+            }
+        }
+    }).then(( async escolas => {
+        for (let escola of escolas){
+            await Turma.findAll({
+                where: {
+                    escolaId: {
+                        [Op.in]: Sequelize.literal(`(SELECT id FROM turmas WHERE escolaid = ${escola.dataValues.id})`)
+                    }
+                }
+            }).then(resposta => {
+                result.push(resposta)
+            })
+        }
+        res.status(200).json(result)
+    })).catch(err => {
+        res.status(400).send(err)
+    })
+    /* const result = []
     Turma.findAll({
         where: {
             id: {
@@ -39,8 +52,7 @@ const getTurmasByProfessor = async (req, res) => {
         res.status(200).json(result)
     })).catch(err => {
         res.status(400).send(err)
-    })
+    }) */
 }
 
-exports.findTurmas = findTurmas;
 exports.getTurmasByProfessor = getTurmasByProfessor;
