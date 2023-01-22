@@ -5,7 +5,7 @@ const utilities = require('../utilities/jwt')
 
 
 const findProfessor = async (req, res) => {
-    Professor.findOne({ where: { email: req.params.profEmail , password: req.params.profPass} }).then(( async result => {
+    Professor.findOne({ where: { email: req.body.email , password: req.body.password} }).then(( async result => {
         if (result) {
             console.log(process.env.SECRET)
            await utilities.generateToken({ id: result.id , email: result.email , password: result.password }, (token) => {

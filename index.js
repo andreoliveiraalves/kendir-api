@@ -14,6 +14,20 @@ const expressSwagger = require('express-swagger-generator')(app);
 const options = require('./swagger_conf'); 
 expressSwagger(options)
 
+const auth = function(req, res, next) {
+    let exceptions = ['/','/professores', '/api-docs']; 
+    if(exceptions.indexOf(req.url) >= 0) {
+        next(); 
+    } else {
+        utilities.validateToken(req.headers.authorization, (result) => {
+            if(result) {
+                next(); 
+            } else {
+                res.status(401).send("Invalid Token"); 
+            }
+        })
+    }
+}
 
 sequelize.authenticate().then(function(errors) { 
     if (errors) {
@@ -23,11 +37,9 @@ sequelize.authenticate().then(function(errors) {
     }
  });
 
-
-
 app.use(express.json());
 app.use(cors());
-
+app.use(auth)
 app.get("/", (req, res) => {
     res.send(`<h1>Bem vindo à API kendir professor</h1>
     <br><p>Para mais informação pode consultar o nosso <a href="https://github.com/andreoliveiraalves/kendir-api">

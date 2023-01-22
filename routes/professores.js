@@ -11,7 +11,7 @@ const professorcontroller = require('../controllers/professores')
  * @returns {Error} 400 - Unexpected error
  */
 
-router.get('/:profEmail/:profPass', function(req, res) {
+router.get('/', function(req, res) {
     professorcontroller.findProfessor(req, res)
 })
 
