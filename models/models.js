@@ -22,8 +22,10 @@ Jogo.hasMany(Nivel)
 Nivel.hasMany(Ronda) 
 Aluno.hasMany(Ronda) 
 Desafio.hasMany(Ronda)
+
 EscolaProfessor.belongsTo(Professor)
 EscolaProfessor.belongsTo(Escola)
+
 Turma.belongsTo(Escola) 
 Aluno.belongsTo(Turma) 
 Modulo.belongsTo(Professor) 
