@@ -19,7 +19,6 @@ const getSchoolsByProfessor = async (req, res) => {
         }
     }).then(( async escolas => {
         for (let escola of escolas){
-            console.log(escolas)
             await Aluno.count({
                 where: {
                     turmaId: {
