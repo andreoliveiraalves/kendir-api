@@ -6,7 +6,7 @@ const professorcontroller = require('../controllers/professores')
 /**
  * @route GET /professores/{email}/{password}
  * @group Login Professor
- * @param {object} object.body - User's Credentials - eg. {"email":"joaop@jregio.com", "password": "fDWQ8d218dD1"} 
+ * @param {object} object.param - User's Credentials - eg. {"email":"joaop@jregio.com", "password": "fDWQ8d218dD1"} 
  * @returns {object} 200 - professorId
  * @returns {Error} 400 - Unexpected error
  */

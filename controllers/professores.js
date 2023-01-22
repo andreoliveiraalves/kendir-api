@@ -1,11 +1,13 @@
 const Professor = require('../models/professores').Professor
+const utilities = require('../utilities/jwt')
 
 
 
 const findProfessor = async (req, res) => {
-    Professor.findOne({ where: { email: req.body.profEmail , password: req.body.profPass} }).then((result) => {
+    Professor.findOne({ where: { email: req.params.profEmail , password: req.params.profPass} }).then((result) => {
         if (result) {
-            res.status(200).json(result.id);
+            const userId = result.id
+            res.status(200).json(userId);
         } else {
             res.status(404).send('Professor with those credentials not found');
         }
