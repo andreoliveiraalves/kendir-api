@@ -13,7 +13,6 @@ const obterDesafios = (req, res) => {
             res.status(400).send('Não foi possivel obter os seus desafios.')
         }
     }).catch((error) => {
-        console.log(error)
         res.status(400).send(error)
     })
 }
