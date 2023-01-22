@@ -8,12 +8,7 @@ const rota_desafios = require('./routes/desafios')
 const rota_escolas = require('./routes/escolas')
 const rota_professores = require('./routes/professores')
 const rota_turmas = require('./routes/turmas')
-<<<<<<< HEAD
 const rota_modulos = require('./routes/modulos')
-=======
-const rota_alunos = require('./routes/alunos')
-const models = require('./models/models')
->>>>>>> 35efa19d765281bb1dac2052b2cd2f83560fbb41
 const utilities = require('./utilities/jwt')
 const expressSwagger = require('express-swagger-generator')(app);
 const options = require('./swagger_conf'); 
@@ -55,11 +50,7 @@ app.use('/desafios', rota_desafios)
 app.use('/escolas', rota_escolas)
 app.use('/professores', rota_professores)
 app.use('/turmas', rota_turmas)
-<<<<<<< HEAD
 app.use('/modulos', rota_modulos)
-=======
-app.use('/alunos', rota_alunos)
->>>>>>> 35efa19d765281bb1dac2052b2cd2f83560fbb41
 app.listen(port,()=> {
     console.log('Server running on port ' + port); 
 })

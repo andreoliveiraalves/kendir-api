@@ -6,9 +6,6 @@ const sequelize = require('../utilities/sequelize').sequelizeConnection
 const Sequelize = require('sequelize');
 const { Op } = Sequelize;
 
-
-//Devolver Array de objectos contendo a escola e número de alunos associados ao ecrã turmas
-
 const getSchoolsByProfessor = async (req, res) => {
     const result = []
     Escola.findAll({
