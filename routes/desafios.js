@@ -8,6 +8,8 @@ const desafiocontroller = require('../controllers/desafios')
  * @param {object} professorId.path - Professor ID - eg. {"professorId":"2",} 
  * @returns {object} 200 - Desafios
  * @returns {Error} 400 - Unexpected error
+ * @returns {Error} 401 - Invalid Token
+ * @security Bearer
  */
 
 router.get('/:professorId', function(req, res) {

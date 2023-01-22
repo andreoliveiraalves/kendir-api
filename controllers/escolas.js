@@ -26,7 +26,6 @@ const getSchoolsByProfessor = async (req, res) => {
                     }
                 }
             }).then(resposta => {
-                console.log(resposta)
                 result.push([escola,resposta])
             })
         }
